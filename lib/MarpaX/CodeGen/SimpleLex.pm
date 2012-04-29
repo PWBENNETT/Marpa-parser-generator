@@ -60,7 +60,7 @@ sub generate_code {
 use strict;
 
 use Marpa::XS;
-use MarpaX::Simple::Lexer;
+use MarpaX::SimpleLexer;
 HEADER
 
     generate_tokens($out_fh, $parse_tree->{tokens});
@@ -79,7 +79,7 @@ sub parse {
     my ($self, $fh) = @_;
     my $grammar = create_grammar();
     my $recognizer = Marpa::XS::Recognizer->new({ grammar => $grammar });
-    my $simple_lexer = MarpaX::Simple::Lexer->new(
+    my $simple_lexer = MarpaX::SimpleLexer->new(
         recognizer     => $recognizer,
 #        input_filter   => sub { ${$_[0]} =~ s/[\r\n]+//g },
         tokens         => \%tokens,
